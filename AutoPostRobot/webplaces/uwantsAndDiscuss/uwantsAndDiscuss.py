@@ -26,6 +26,7 @@ class UwantsAndDiscuss(LoginPageBrowser, SubPageBrower):
             self.browser.find_element_by_name('password').send_keys(password)
             # click on login button
             self.browser.find_element_by_name('loginsubmit').click()
+            super().login()
         finally:
             # go to main page no matter login succeed or not
             self.goto_main_page()
