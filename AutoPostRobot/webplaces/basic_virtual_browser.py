@@ -4,8 +4,10 @@ from selenium import webdriver
 
 class BasicBrowser:
     def start(self):
-        self.browser = webdriver.Chrome(executable_path=r"...public/chromedriver.exe")
-        #self.browser = webdriver.Chrome(executable_path=r"chromedriver.exe")
+        self.browser = webdriver.Chrome(executable_path=r"public/chromedriver.exe")
+        # set driver an implicit wait for 1 second to poll DOM
+        #self.browser.implicitly_wait(1)
+
 
     def terminate(self):
         self.browser.close()
