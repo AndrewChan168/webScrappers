@@ -5,13 +5,15 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException,
 
 from ..basic_virtual_browser import *
 
-TIMEOUT = 3
+TIMEOUT = 10
+
 
 class UwantsAndDiscuss(LoginPageBrowser, SubPageBrower):
     def __init__(self):
         super().__init__()
 
     def login(self, username:str, password:str):
+        print('UwantsAndDiscuss.login()')
         ### go to login page
         self.goto_login_page()
         try:
@@ -33,10 +35,12 @@ class UwantsAndDiscuss(LoginPageBrowser, SubPageBrower):
         return self
 
     def post_comment(self, post_id:str, comment_content:str):
+        print('UwantsAndDiscuss.post_comment()')
         ### let child class to implement as there are some differences between discuss and uwants
         return self
 
     def post_comments_by_batch(self, post_ids:list, comment_contents:list):
+        print('UwantsAndDiscuss.post_comments_by_batch()')
         assert len(post_ids)==len(comment_contents), "Number of post-IDs is not equal to contents"
         for post_id, comment_content in zip(post_ids, comment_contents):
             _ = self.post_comment(post_id, comment_content)
